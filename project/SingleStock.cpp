@@ -16,7 +16,7 @@ string SingleStock::getAbbreviation() const {
 const DayPerformance& SingleStock::getPerformance() const {
     return performance_; }
 
-int SingleStock::getHashValue() const {
+unsigned long SingleStock::getHashValue() const {
     return hashValue_; }
 
 void SingleStock::importData(){
@@ -52,5 +52,6 @@ unsigned long SingleStock::hashFunction() const{
     for (char c : name_) {
         hash = ((hash << 5) + hash) + c; // hash * 33 + c
     }
+
     return hash;
 }

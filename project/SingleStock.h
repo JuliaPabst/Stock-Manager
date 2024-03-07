@@ -12,7 +12,7 @@ public:
     string getWkn() const;
     string getAbbreviation() const;
     const DayPerformance& getPerformance() const;
-    int getHashValue() const;
+    unsigned long getHashValue() const;
     void importData();
     void printData() const;
     unsigned long hashFunction() const;

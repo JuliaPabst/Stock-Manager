@@ -6,17 +6,27 @@
 #include <algorithm>
 #include "DayPerformance.h"
 #include "SingleStock.h"
+#include "Stocks.h"
 
 using namespace std;
 
 int main() {
 
     // add single stock
+    Stocks allStocks;
     DayPerformance dummyPerformance(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     SingleStock newStock("", "", "", dummyPerformance);
     newStock.importData();
-    newStock.printData();
+    //newStock.printData();
+    allStocks.addToArray(newStock);
+    cout << "another one" << endl;
+    SingleStock anotherStock("", "", "", dummyPerformance);
+    anotherStock.importData();
+    //anotherStock.printData();
+    allStocks.addToArray(anotherStock);
+
+    allStocks.printAll();
 
 
     //File reading
