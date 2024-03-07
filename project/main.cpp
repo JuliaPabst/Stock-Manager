@@ -10,9 +10,8 @@
 using namespace std;
 
 int main() {
-    /*
-     * hi
-     * File reading
+
+    //File reading
     ifstream file("ALGO.csv");
     if (!file.is_open()) {
         cerr << "Konnte die Datei nicht öffnen!" << endl;
@@ -56,7 +55,7 @@ int main() {
     for (const auto& stock : stocks) {
         stock.printData();
     }
-*/
+
     return 0;
 }
 

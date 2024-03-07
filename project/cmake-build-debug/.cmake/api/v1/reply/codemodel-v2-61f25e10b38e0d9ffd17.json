@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Algorithemen_und_Datenstrukturen/Stock-Manager/ALGO_P1 2/cmake-build-debug",
-		"source" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Algorithemen_und_Datenstrukturen/Stock-Manager/ALGO_P1 2"
+		"build" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Algorithemen_und_Datenstrukturen/Stock-Manager/project/cmake-build-debug",
+		"source" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Algorithemen_und_Datenstrukturen/Stock-Manager/project"
 	},
 	"version" : 
 	{

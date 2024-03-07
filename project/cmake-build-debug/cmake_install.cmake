@@ -1,4 +1,4 @@
-# Install script for directory: /Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Algorithemen_und_Datenstrukturen/Stock-Manager/ALGO_P1 2
+# Install script for directory: /Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Algorithemen_und_Datenstrukturen/Stock-Manager/project
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Algorithemen_und_Datenstrukturen/Stock-Manager/ALGO_P1 2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Algorithemen_und_Datenstrukturen/Stock-Manager/project/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
