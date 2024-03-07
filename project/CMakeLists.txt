@@ -9,4 +9,6 @@ add_executable(ALGO_P1 main.cpp
         SingleStock.cpp
         SingleStock.h
         Hashtable.cpp
-        Hashtable.h)
+        Hashtable.h
+        Stocks.cpp
+        Stocks.h)

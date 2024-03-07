@@ -1,7 +1,8 @@
 #include "SingleStock.h"
 
 SingleStock::SingleStock(string name, string wkn, string abbreviation, const DayPerformance& performance)
-: name_(name), wkn_(wkn), abbreviation_(abbreviation), performance_(performance), hashValue_(hashFunction()) {}
+: name_(name), wkn_(wkn), abbreviation_(abbreviation), performance_(performance), hashValue_(0){
+}
 
 string SingleStock::getName() const {
     return name_;}
@@ -17,6 +18,17 @@ const DayPerformance& SingleStock::getPerformance() const {
 
 int SingleStock::getHashValue() const {
     return hashValue_; }
+
+void SingleStock::importData(){
+    cout << "You are adding a new stock" << endl;
+    cout << "Name: " << endl;
+    cin >> name_;
+    cout << "WKN: " << endl;
+    cin >> wkn_;
+    cout << "Abbreviation: " << endl;
+    cin >> abbreviation_;
+    hashValue_ = hashFunction();
+}
 
 void SingleStock::printData() const {
     cout << "Name: " << getName() << endl;
@@ -35,7 +47,7 @@ void SingleStock::printData() const {
 }
 
 // djb2-Hashfunktion
-unsigned long SingleStock::hashFunction() {
+unsigned long SingleStock::hashFunction() const{
     unsigned long hash = 5381;
     for (char c : name_) {
         hash = ((hash << 5) + hash) + c; // hash * 33 + c

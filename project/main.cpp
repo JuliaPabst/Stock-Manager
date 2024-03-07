@@ -11,7 +11,16 @@ using namespace std;
 
 int main() {
 
+    // add single stock
+    DayPerformance dummyPerformance(0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+    SingleStock newStock("", "", "", dummyPerformance);
+    newStock.importData();
+    newStock.printData();
+
+
     //File reading
+    /*
     ifstream file("ALGO.csv");
     if (!file.is_open()) {
         cerr << "Konnte die Datei nicht öffnen!" << endl;
@@ -55,6 +64,7 @@ int main() {
     for (const auto& stock : stocks) {
         stock.printData();
     }
+    */
 
     return 0;
 }

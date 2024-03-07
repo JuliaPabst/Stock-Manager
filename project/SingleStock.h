@@ -13,8 +13,10 @@ public:
     string getAbbreviation() const;
     const DayPerformance& getPerformance() const;
     int getHashValue() const;
+    void importData();
     void printData() const;
-    unsigned long hashFunction();
+    unsigned long hashFunction() const;
+
 
 private:
     string name_;
