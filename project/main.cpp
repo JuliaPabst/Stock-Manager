@@ -19,18 +19,18 @@ int main() {
     SingleStock newStock("", "", "", dummyPerformance);
     newStock.importData();
     //newStock.printData();
-    allStocks.addToArray(newStock);
+    allStocks.addToHashTable(newStock);
     cout << "another one" << endl;
     SingleStock anotherStock("", "", "", dummyPerformance);
     anotherStock.importData();
     //anotherStock.printData();
-    allStocks.addToArray(anotherStock);
+    allStocks.addToHashTable(anotherStock);
 
     allStocks.printAll();
 
-
+/*
     //File reading
-    /*
+
     ifstream file("ALGO.csv");
     if (!file.is_open()) {
         cerr << "Konnte die Datei nicht öffnen!" << endl;
@@ -63,19 +63,15 @@ int main() {
             DayPerformance dayPerformance(day, month, year,
                                           stod(tokens[1]), std::stod(tokens[2]), std::stod(tokens[3]),
                                           stod(tokens[4]), std::stoi(tokens[6]), std::stod(tokens[5]));
-
             SingleStock stock(tokens[8], "", "", dayPerformance);  // Dummy-Werte für WKN und Abkürzung, kann angepasst werden
-            stocks.push_back(stock);
+            allStocks.addToHashTable(stock);
         }
     }
 
+
     file.close();
-
-    for (const auto& stock : stocks) {
-        stock.printData();
-    }
-    */
-
+    allStocks.printAll();
+*/
     return 0;
 }
 

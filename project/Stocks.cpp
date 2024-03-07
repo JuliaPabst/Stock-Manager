@@ -7,7 +7,7 @@ int Stocks::quadraticProbing(int hash, int i, int tableSize) {
         return (hash + i * i) % tableSize_;
 }
 
-void Stocks::addToArray(SingleStock newStock){
+void Stocks::addToHashTable(SingleStock newStock){
     int hashValue = newStock.getHashValue() % tableSize_;
     int i = 0;
     int index = quadraticProbing(hashValue, i, tableSize_);
@@ -15,8 +15,6 @@ void Stocks::addToArray(SingleStock newStock){
         i++;
         index = quadraticProbing(hashValue, i, tableSize_);
     }
-    cout << "Index is: " << index << endl;
-
     stocks_[index].push_back(newStock);
 };
 
@@ -28,7 +26,7 @@ void Stocks::printAll() const {
     }
 }
 
-void Stocks::deleteFromArray(){
+void Stocks::deleteFromHashTable(){
 };
 
 void Stocks::deleteFromHashList(){
