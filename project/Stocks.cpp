@@ -28,7 +28,3 @@ void Stocks::printAll() const {
 
 void Stocks::deleteFromHashTable(){
 };
-
-void Stocks::deleteFromHashList(){
-
-};

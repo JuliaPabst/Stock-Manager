@@ -18,7 +18,6 @@ public:
 private:
     int tableSize_;
     vector<list<SingleStock>> stocks_;
-    void deleteFromHashList();
 };
 
 
