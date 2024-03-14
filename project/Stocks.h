@@ -11,7 +11,9 @@ class Stocks {
 public:
     Stocks();
     int quadraticProbing(int hash, int i, int tableSize);
+    SingleStock* findStock(const string& name);
     void addToHashTable(SingleStock newStock);
+    unsigned long hashFunction(string name) const;
     void deleteFromHashTable();
     void printAll() const;
 

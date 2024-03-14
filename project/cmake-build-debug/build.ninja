@@ -67,12 +67,6 @@ build CMakeFiles/ALGO_P1.dir/SingleStock.cpp.o: CXX_COMPILER__ALGO_P1_unscanned_
   OBJECT_DIR = CMakeFiles/ALGO_P1.dir
   OBJECT_FILE_DIR = CMakeFiles/ALGO_P1.dir
 
-build CMakeFiles/ALGO_P1.dir/Hashtable.cpp.o: CXX_COMPILER__ALGO_P1_unscanned_Debug /Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Algorithemen_und_Datenstrukturen/Stock-Manager/project/Hashtable.cpp || cmake_object_order_depends_target_ALGO_P1
-  DEP_FILE = CMakeFiles/ALGO_P1.dir/Hashtable.cpp.o.d
-  FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/ALGO_P1.dir
-  OBJECT_FILE_DIR = CMakeFiles/ALGO_P1.dir
-
 build CMakeFiles/ALGO_P1.dir/Stocks.cpp.o: CXX_COMPILER__ALGO_P1_unscanned_Debug /Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Algorithemen_und_Datenstrukturen/Stock-Manager/project/Stocks.cpp || cmake_object_order_depends_target_ALGO_P1
   DEP_FILE = CMakeFiles/ALGO_P1.dir/Stocks.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
@@ -87,7 +81,7 @@ build CMakeFiles/ALGO_P1.dir/Stocks.cpp.o: CXX_COMPILER__ALGO_P1_unscanned_Debug
 #############################################
 # Link the executable ALGO_P1
 
-build ALGO_P1: CXX_EXECUTABLE_LINKER__ALGO_P1_Debug CMakeFiles/ALGO_P1.dir/main.cpp.o CMakeFiles/ALGO_P1.dir/DayPerformance.cpp.o CMakeFiles/ALGO_P1.dir/SingleStock.cpp.o CMakeFiles/ALGO_P1.dir/Hashtable.cpp.o CMakeFiles/ALGO_P1.dir/Stocks.cpp.o
+build ALGO_P1: CXX_EXECUTABLE_LINKER__ALGO_P1_Debug CMakeFiles/ALGO_P1.dir/main.cpp.o CMakeFiles/ALGO_P1.dir/DayPerformance.cpp.o CMakeFiles/ALGO_P1.dir/SingleStock.cpp.o CMakeFiles/ALGO_P1.dir/Stocks.cpp.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
   OBJECT_DIR = CMakeFiles/ALGO_P1.dir
   POST_BUILD = :

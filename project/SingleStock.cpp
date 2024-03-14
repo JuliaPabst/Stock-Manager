@@ -1,7 +1,9 @@
 #include "SingleStock.h"
 
 SingleStock::SingleStock(string name, string wkn, string abbreviation, const DayPerformance& performance)
-: name_(name), wkn_(wkn), abbreviation_(abbreviation), performance_(performance), hashValue_(0){
+: name_(name), wkn_(wkn), abbreviation_(abbreviation){
+    hashValue_ = hashFunction();
+    performance_.push_back(performance);
 }
 
 string SingleStock::getName() const {
@@ -13,12 +15,15 @@ string SingleStock::getWkn() const {
 string SingleStock::getAbbreviation() const {
     return abbreviation_; }
 
-const DayPerformance& SingleStock::getPerformance() const {
+vector<DayPerformance> SingleStock::getPerformance() const {
     return performance_; }
 
 unsigned long SingleStock::getHashValue() const {
     return hashValue_; }
 
+void SingleStock::addPerformance(const DayPerformance& performance) {
+    performance_.push_back(performance);
+}
 void SingleStock::importData(){
     cout << "You are adding a new stock" << endl;
     cout << "Name: " << endl;
@@ -31,26 +36,35 @@ void SingleStock::importData(){
 }
 
 void SingleStock::printData() const {
-    cout << "Name: " << getName() << endl;
-    cout << "WKN: " << getWkn() << endl;
-    cout << "Abbreviation: " << getAbbreviation() << endl;
-    cout << "Day Performance:" << endl;
-    cout << "  Date: " << getPerformance().getDay() << "." << getPerformance().getMonth() << "." << SingleStock::getPerformance().getYear() << endl;
-    cout << "  Open: " << getPerformance().getOpen() << endl;
-    cout << "  High: " << getPerformance().getHigh() << endl;
-    cout << "  Low: " << getPerformance().getLow() << endl;
-    cout << "  Close: " << getPerformance().getClose() << endl;
-    cout << "  Adj Close: " << getPerformance().getAdjClose() << endl;
-    cout << "  Volume: " << getPerformance().getVolume() << endl;
-    cout << "Hash Value: " << getHashValue() << endl;
+    cout << "Name: " << name_ << endl;
+    cout << "WKN: " << wkn_ << endl;
+    cout << "Abbreviation: " << abbreviation_ << endl;
+    cout << "Hash Value: " << hashValue_ << endl;
     cout << "-------------------------" << endl;
+}
+
+void SingleStock::printPerformance() const{
+
+    for (const DayPerformance& performance : performance_){
+        cout << "Name: " << name_ << endl;
+        cout << "  Date: " << performance.getDay() << "." << performance.getMonth() << "." << performance.getYear() << endl;
+        cout << "  Open: " << performance.getOpen() << endl;
+        cout << "  High: " << performance.getHigh() << endl;
+        cout << "  Low: " << performance.getLow() << endl;
+        cout << "  Close: " << performance.getClose() << endl;
+        cout << "  Adj Close: " << performance.getAdjClose() << endl;
+        cout << "  Volume: " << performance.getVolume() << endl;
+        cout << " " << endl;
+    }
 }
 
 // djb2-Hashfunktion
 unsigned long SingleStock::hashFunction() const{
     unsigned long hash = 5381;
-    for (char c : name_) {
-        hash = ((hash << 5) + hash) + c; // hash * 33 + c
+    char current = ' ';
+    for (int i = 0;  current != '\0'; i++) {
+        current = name_[i];
+        hash = ((hash << 5) + hash) + current; // hash * 33 + c
     }
 
     return hash;

@@ -11,10 +11,12 @@ public:
     string getName() const;
     string getWkn() const;
     string getAbbreviation() const;
-    const DayPerformance& getPerformance() const;
+    vector<DayPerformance> getPerformance() const;
     unsigned long getHashValue() const;
+    void addPerformance(const DayPerformance& performance);
     void importData();
     void printData() const;
+    void printPerformance() const;
     unsigned long hashFunction() const;
 
 
@@ -22,8 +24,8 @@ private:
     string name_;
     string wkn_;
     string abbreviation_;
-    DayPerformance performance_;
-    int hashValue_;
+    vector<DayPerformance> performance_;
+    unsigned long hashValue_;
 
 };
 
