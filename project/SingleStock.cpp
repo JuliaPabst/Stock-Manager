@@ -62,10 +62,8 @@ void SingleStock::printPerformance() const{
 unsigned long SingleStock::hashFunction() const{
     unsigned long hash = 5381;
     char current = ' ';
-    for (int i = 0;  current != '\0'; i++) {
-        current = name_[i];
-        hash = ((hash << 5) + hash) + current; // hash * 33 + c
+    for (char c : name_) {
+        hash = ((hash << 5) + hash) + c;
     }
-
     return hash;
 }

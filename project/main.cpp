@@ -11,26 +11,11 @@
 using namespace std;
 
 int main() {
-
-    // add single stock
     Stocks allStocks;
     DayPerformance dummyPerformance(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    int input = 0;
 
-    /*
-    SingleStock newStock("", "", "", dummyPerformance);
-    newStock.importData();
-    //newStock.printData();
-    allStocks.addToHashTable(newStock);
-    cout << "another one" << endl;
-    SingleStock anotherStock("", "", "", dummyPerformance);
-    anotherStock.importData();
-    //anotherStock.printData();
-    allStocks.addToHashTable(anotherStock);
-
-    allStocks.printAll();
-    */
-
-
+    // file import
     std::ifstream file("ALGO.csv");
     if (!file.is_open()) {
         std::cerr << "Konnte die Datei nicht öffnen!" << std::endl;
@@ -99,7 +84,49 @@ int main() {
 
     file.close();
 
-    allStocks.printAll();
+
+    cout << "Welcome to our Stock Manager!" << endl;
+
+    do{
+        cout << "What do you want to do? Print collection (1), add Stock (2), search for Stock (3), delete Stock(4)" << endl;
+        cin >> input;
+        if (input != 1 && input != 2 && input != 3 && input != 4 && input != 0){
+            cout << "Input was not valid. Try again! Add Stock (1), search for Stock (2), delete Stock(3)";
+            cin >> input;
+        }
+        if(input == 1){
+            allStocks.printAll();
+        } else if(input == 2){
+            SingleStock newStock("", "", "", dummyPerformance);
+            newStock.importData();
+            allStocks.addToHashTable(newStock);
+            cout << "This stock has been added to your Stock Collection: " << endl;
+            newStock.printData();
+        } else if(input == 3){
+            string toSearch;
+            cout << "Type in the name of the stock you are searching for!" << endl;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore leftover newline
+            getline(cin, toSearch);
+            SingleStock* searchedStock = allStocks.findStock(toSearch);
+            if(searchedStock){
+                searchedStock->printData();
+            } else {
+                cout << "Stock not found!" << endl;
+            }
+        } else if(input == 4){
+            cout << "Your current list of stocks: " << endl;
+            allStocks.printAll();
+            string toDelete;
+            cout << "Type in the name of the stock you want to delete!" << endl;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore leftover newline
+            getline(cin, toDelete);
+            allStocks.deleteStock(toDelete);
+            cout << " " << endl;
+            cout << "New List of Stocks: " << endl;
+            allStocks.printAll();
+        }
+    } while (input != 0);
+
     return 0;
 }
 

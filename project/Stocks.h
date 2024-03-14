@@ -14,7 +14,7 @@ public:
     SingleStock* findStock(const string& name);
     void addToHashTable(SingleStock newStock);
     unsigned long hashFunction(string name) const;
-    void deleteFromHashTable();
+    void deleteStock(const string& name);
     void printAll() const;
 
 private:
