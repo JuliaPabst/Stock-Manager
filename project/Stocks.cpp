@@ -61,5 +61,3 @@ void Stocks::printAll() const {
         }
     }
 }
-
-

@@ -36,19 +36,24 @@ int main() {
         // Zeilennummer-basierte Abkürzungs(Zeichencode)-Zuweisung
         std::string abbreviation;
         std::string name;
+        std::string WKN;
 
         if (lineNumber >= 1 && lineNumber <= 250) {
             abbreviation = "MSFT";
             name = "Microsoft Corporation";
+            WKN = "870747";
         } else if (lineNumber >= 251 && lineNumber <= 504) {
             abbreviation = "RY4C";
             name = "Ryanair Holding";
+            WKN = "A1401Z";
         } else if (lineNumber >= 505 && lineNumber <= 755) {
             abbreviation = "TSLA";
             name = "Tesla, Inc.";
+            WKN ="A1CX3T";
         } else if (lineNumber >= 756 && lineNumber <= 1008) {
             abbreviation = "PKTM";
             name = "PIERER Mobility AG";
+            WKN ="A2JKHY";
         }
 
         std::replace(line.begin(), line.end(), ',', '.');
@@ -70,7 +75,7 @@ int main() {
                                           std::stod(tokens[1]), std::stod(tokens[2]), std::stod(tokens[3]),
                                           std::stod(tokens[4]), std::stoi(tokens[6]), std::stod(tokens[5]));
 
-            SingleStock stock(name, "", abbreviation, dayPerformance);  // Verwende abbreviation für die Abkürzung, has Value == HASH VALUE
+            SingleStock stock(name, WKN, abbreviation, dayPerformance);  // Verwende abbreviation für die Abkürzung, has Value == HASH VALUE
 
             SingleStock* existingStock = allStocks.findStock(stock.getName());
             if (existingStock) {
@@ -88,10 +93,10 @@ int main() {
     cout << "Welcome to our Stock Manager!" << endl;
 
     do{
-        cout << "What do you want to do? Print collection (1), add Stock (2), search for Stock (3), delete Stock(4)" << endl;
+        cout << "What do you want to do? Print collection (1), add Stock (2), search for Stock (3), delete Stock(4), print Plot (5)" << endl;
         cin >> input;
-        if (input != 1 && input != 2 && input != 3 && input != 4 && input != 0){
-            cout << "Input was not valid. Try again! Add Stock (1), search for Stock (2), delete Stock(3)";
+        if (input != 1 && input != 2 && input != 3 && input != 4 && input != 0 && input !=5){
+            cout << "Input was not valid. Try again! Print collection (1), add Stock (2), search for Stock (3), delete Stock(4), print Plot (5)";
             cin >> input;
         }
         if(input == 1){
@@ -125,7 +130,22 @@ int main() {
             cout << "New List of Stocks: " << endl;
             allStocks.printAll();
         }
-    } while (input != 0);
+        else if( input == 5){
+                string toSearch;
+                cout << "Geben Sie den Namen der Aktie ein, für die Sie die letzten 30 Tage als ASCII-Grafik anzeigen möchten: "<<endl;
+                allStocks.printAll();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore leftover newline
+                getline(cin, toSearch);
+                SingleStock* searchedStock = allStocks.findStock(toSearch);
+                if(searchedStock) {
+                    searchedStock->printAsciiGraphLast30Days();
+                }
+                else {
+                    cout << "Aktie nicht gefunden." << endl;
+                }
+        }
+
+        } while (input != 0);
 
     return 0;
 }

@@ -67,3 +67,29 @@ unsigned long SingleStock::hashFunction() const{
     }
     return hash;
 }
+
+
+void SingleStock::printAsciiGraphLast30Days() const {
+    if (performance_.size() < 30) {
+        std::cout << "Nicht genügend Daten vorhanden." << std::endl;
+        return;
+    }
+
+    auto last30Days = std::vector<DayPerformance>(performance_.end() - 30, performance_.end());
+
+    // Ermitteln des Maximal- und Minimalwerts der Schlusskurse
+    double maxClose = (*std::max_element(last30Days.begin(), last30Days.end(), [](const DayPerformance& a, const DayPerformance& b) {
+        return a.getClose() < b.getClose();
+    })).getClose();
+
+    double minClose = (*std::min_element(last30Days.begin(), last30Days.end(), [](const DayPerformance& a, const DayPerformance& b) {
+        return a.getClose() < b.getClose();
+    })).getClose();
+
+    // Skalieren und Ausgeben der Daten
+    for (const auto& day : last30Days) {
+        double normalized = (day.getClose() - minClose) / (maxClose - minClose) * 20; // Skalieren auf einen Bereich von 0 bis 20
+        std::cout << day.getDay() << "." << day.getMonth() << ": " << std::string(static_cast<size_t>(normalized), '*') << std::endl;
+    }
+}
+

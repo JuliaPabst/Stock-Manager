@@ -18,6 +18,7 @@ public:
     void printData() const;
     void printPerformance() const;
     unsigned long hashFunction() const;
+    void printAsciiGraphLast30Days() const;
 
 
 private:
