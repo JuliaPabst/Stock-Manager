@@ -40,11 +40,19 @@ void SingleStock::printData() const {
     cout << "WKN: " << wkn_ << endl;
     cout << "Abbreviation: " << abbreviation_ << endl;
     cout << "Hash Value: " << hashValue_ << endl;
+    cout << " " << endl;
+    cout << "Most current performance: " << endl;
+    cout << "  Date: " << performance_[0].getDay() << "." << performance_[0].getMonth() << "." << performance_[0].getYear() << endl;
+    cout << "  Open: " << performance_[0].getOpen() << endl;
+    cout << "  High: " << performance_[0].getHigh() << endl;
+    cout << "  Low: " << performance_[0].getLow() << endl;
+    cout << "  Close: " << performance_[0].getClose() << endl;
+    cout << "  Adj Close: " << performance_[0].getAdjClose() << endl;
+    cout << "  Volume: " << performance_[0].getVolume() << endl;
     cout << "-------------------------" << endl;
 }
 
 void SingleStock::printPerformance() const{
-
     for (const DayPerformance& performance : performance_){
         cout << "Name: " << name_ << endl;
         cout << "  Date: " << performance.getDay() << "." << performance.getMonth() << "." << performance.getYear() << endl;

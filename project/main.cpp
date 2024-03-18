@@ -18,22 +18,21 @@ int main() {
     // file import
     std::ifstream file("ALGO.csv");
     if (!file.is_open()) {
-        std::cerr << "Konnte die Datei nicht öffnen!" << std::endl;
+        std::cerr << "File could not be opened!" << std::endl;
         return 1;
     } else {
-        std::cout << "Datei erfolgreich geöffnet!" << std::endl;
+        std::cout << "File data imported sucessfully!" << std::endl;
     }
 
     std::string line;
-    std::getline(file, line);  // Ignoriere die erste Zeile (Überschrift)
+    std::getline(file, line);  // ignore first line (headline)
 
     std::vector<SingleStock> stocks;
-    int lineNumber = 0;  // Startet mit 0, da die erste Datenzeile als Zeile 1 zählt
+    int lineNumber = 0;
 
     while (std::getline(file, line)) {
-        lineNumber++;  // Aktualisiere die Zeilennummer für jede gelesene Zeile
+        lineNumber++;
 
-        // Zeilennummer-basierte Abkürzungs(Zeichencode)-Zuweisung
         std::string abbreviation;
         std::string name;
         std::string WKN;
@@ -75,7 +74,7 @@ int main() {
                                           std::stod(tokens[1]), std::stod(tokens[2]), std::stod(tokens[3]),
                                           std::stod(tokens[4]), std::stoi(tokens[6]), std::stod(tokens[5]));
 
-            SingleStock stock(name, WKN, abbreviation, dayPerformance);  // Verwende abbreviation für die Abkürzung, has Value == HASH VALUE
+            SingleStock stock(name, WKN, abbreviation, dayPerformance);
 
             SingleStock* existingStock = allStocks.findStock(stock.getName());
             if (existingStock) {
@@ -93,10 +92,10 @@ int main() {
     cout << "Welcome to our Stock Manager!" << endl;
 
     do{
-        cout << "What do you want to do? Print collection (1), add Stock (2), search for Stock (3), delete Stock(4), print Plot (5)" << endl;
+        cout << "What do you want to do? Quit (0), Print collection (1), add Stock (2), search for Stock (3), delete Stock(4), print Plot (5), save stock data in csv (6)" << endl;
         cin >> input;
-        if (input != 1 && input != 2 && input != 3 && input != 4 && input != 0 && input !=5){
-            cout << "Input was not valid. Try again! Print collection (1), add Stock (2), search for Stock (3), delete Stock(4), print Plot (5)";
+        if (input != 0 && input != 1 && input != 2 && input != 3 && input != 4 && input != 0 && input !=5 && input !=6){
+            cout << "Input was not valid. Try again! Print collection (1), add Stock (2), search for Stock (3), delete Stock(4), print Plot (5), save stock data in csv (6)" << endl;
             cin >> input;
         }
         if(input == 1){
@@ -132,7 +131,7 @@ int main() {
         }
         else if( input == 5){
                 string toSearch;
-                cout << "Geben Sie den Namen der Aktie ein, für die Sie die letzten 30 Tage als ASCII-Grafik anzeigen möchten: "<<endl;
+                cout << "Type in the name of the stock for which you want to see the last 30 days in an ASCII-graph: "<<endl;
                 allStocks.printAll();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore leftover newline
                 getline(cin, toSearch);
@@ -141,8 +140,13 @@ int main() {
                     searchedStock->printAsciiGraphLast30Days();
                 }
                 else {
-                    cout << "Aktie nicht gefunden." << endl;
+                    cout << "Stock not found!" << endl;
                 }
+        } else if (input == 6) {
+            string filename;
+            cout << "Insert name for file that it should be saved in!";
+            cin >> filename;
+            allStocks.saveToFile(filename);
         }
 
         } while (input != 0);
